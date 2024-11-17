@@ -207,14 +207,13 @@ class GenGAN:
                 loss_G = loss_GAN + 10 * loss_pixel
                 loss_G.backward()
                 optimizer_G.step()
-
-                # Train Discriminator
-                optimizer_D.zero_grad()
-                loss_real = criterion_GAN(self.netD(real_images), valid)
-                loss_fake = criterion_GAN(self.netD(gen_imgs.detach()), fake)
-                loss_D = (loss_real + loss_fake) / 2
-                loss_D.backward()
-                optimizer_D.step()
+                if i % 4 == 0:  # Entraînez le discriminateur un batch sur deux
+                    optimizer_D.zero_grad()
+                    loss_real = criterion_GAN(self.netD(real_images), valid)
+                    loss_fake = criterion_GAN(self.netD(gen_imgs.detach()), fake)
+                    loss_D = (loss_real + loss_fake) / 2
+                    loss_D.backward()
+                    optimizer_D.step()
 
             scheduler_G.step()
             scheduler_D.step()

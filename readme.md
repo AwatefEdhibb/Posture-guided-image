@@ -25,3 +25,14 @@ For inference, you can test the different models by running DanceDemo.py and mod
 4. Early Stopping: If the  loss does not improve for 20 consecutive epochs, the training stops automatically to prevent overfitting.
 
 6. Best Model Saving:model is saved whenever a better loss is observed, ensuring that the best parameters are retained.
+
+
+Le meilleur résultat est obtenu avec GAN (size input = 128) en utilisant les fonctionnalités suivantes:
+
+1. Fonctions de perte : La perte GAN (MSE) est utilisée pour l'adversarial training, complétée par une perte L1 (pixel loss) pour améliorer la qualité des images générées.
+
+2. Optimisation : Utilisation d'Adam avec des taux d'apprentissage différents pour le générateur (0.0001) et le discriminateur (0.0004), ainsi qu'un scheduler pour réduire le taux d'apprentissage tous les 30 pas.
+
+3. Entraînement par lots alternés : Le générateur est mis à jour à chaque itération, mais le discriminateur seulement tous les 4 lots.
+
+4. Early Stopping : Si la perte du générateur n'améliore pas pendant un certain nombre d'époques, l'entraînement est arrêté pour éviter le surentraînement.

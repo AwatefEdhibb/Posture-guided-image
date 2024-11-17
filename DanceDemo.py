@@ -11,8 +11,8 @@ from Skeleton import Skeleton
 from GenNearest import GenNeirest
 from GenVanillaNNfromSke import *
 from GenVanillaNNfromImage import *
-#from GenGAN128 import *
-from GenGAN2 import *
+from GenGAN128 import *
+#from GenGAN2 import *
 #from GenVanillaNN_directNeuralNeutwork import GenVanillaNN
 
 class DanceDemo:
